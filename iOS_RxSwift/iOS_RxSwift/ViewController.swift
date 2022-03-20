@@ -37,7 +37,9 @@ class ViewController: UIViewController {
         
         // bind selected model selected handler
         // did select item form the table view = didSelectRowAtIndexPath() (Delegate)
-      //  tableView.rx.modelSelected(Product.self)
+        tableView.rx.modelSelected(Product.self).bind { selectedProduct in
+            print(selectedProduct.productName)
+        }.disposed(by: bag)
         
         //fetch items
         ViewModel.fetchItems()
